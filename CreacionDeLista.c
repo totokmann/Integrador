@@ -27,19 +27,19 @@ void insertarNodo(Registro* registro, Nodo* nuevoNodo) {
     if (registro->primero == NULL) {
         registro->primero = nuevoNodo;
         registro->ultimo = nuevoNodo;
-        registro->cantidadDeNumeros++;
     } else {
         registro->ultimo->siguiente = nuevoNodo;
         registro->ultimo = nuevoNodo;
-        registro->cantidadDeNumeros++;
     }
+    registro->cantidadDeNumeros+=1;
+    return;
 }
 
 void imprimirMatriz(Registro* registro) {
     Nodo* actual = registro->primero;
     int columna = 0;
     while (actual != NULL) {
-        printf("%3s", actual->linea);
+        printf("%s", actual->linea);
         columna++;
         if (columna % 10 == 0) {
             printf("\n");
@@ -56,6 +56,68 @@ void imprimirMatriz(Registro* registro) {
         actual = actual->siguiente;
     }
 }
+
+// Función para ordenar el registro utilizando el método burbuja
+void ordenarRegistro(Registro* registro) {
+    int n = registro->cantidadDeNumeros;
+    printf("\nCantidad de numeros: %d\n", n);
+    Nodo* actual;
+    Nodo* siguiente;
+    int cambioRealizado;
+
+    //Iteramos sobre i, hasta la cantidad de numeros - 1
+    for (int i = 0; i < n - 1; i++) {
+        printf("\nIteración en i: %d\n", i);
+        printf("Iteracion %i: %i\n", i, n);
+        actual = registro->primero;
+        siguiente = actual->siguiente;
+        cambioRealizado = 0;
+
+        //iteramos sobre j hasta la cantidad de numeros - el i previo - 1
+        //O sea, recorremos j veces hasta el número de elementos menos el i iterado.
+        //Esto nos permite ir desde el nodo actual hasta todos los que quedan "hacia la derecha"
+        for (int j = 0; j < n - i - 1; j++) {
+            printf("Iteracion %i: %i\n", j, n);
+            int numeroActual = atoi(actual->linea);
+            int numeroSiguiente = atoi(siguiente->linea);
+
+            // Si el numero "a la izquierda" es mayor al de la derecha lo movemos a la derecha
+            if (numeroActual > numeroSiguiente) {
+                // Realizar intercambio de nodos
+                Nodo* temp = actual;
+                actual = siguiente;
+                siguiente = temp;
+                //Si era el primero lo inserta como primero en el registro
+                if (j == 0) {
+                    registro->primero = actual;
+                } else {
+                    Nodo* nodoAnterior = registro->primero;
+                    for (int k = 0; k < j - 1; k++) {
+                        nodoAnterior = nodoAnterior->siguiente;
+                    }
+                    nodoAnterior->siguiente = actual;
+                }
+                //En cualquier caso se registra como siguiente al previo
+                actual->siguiente = siguiente;
+                temp->siguiente = siguiente->siguiente;
+                siguiente->siguiente = temp;
+
+                cambioRealizado = 1;
+            }
+
+            actual = actual->siguiente;
+            siguiente = siguiente->siguiente;
+        }
+
+        if (!cambioRealizado) {
+            // Si no se realizó ningún intercambio en la primera iteración, el registro ya está ordenado
+            break;
+        }
+    }
+    printf("Matriz ordenada:\n");
+    return;
+}
+
 
 int main() {
 
@@ -83,18 +145,11 @@ int main() {
         Nodo* nuevoNodo = crearNodo(linea);
         insertarNodo(registro, nuevoNodo);
     }
+    printf("cantidad de elementos: %d\n", registro->cantidadDeNumeros);
 
     fclose(archivo);
     imprimirMatriz(registro);
-
-    // Liberar la memoria de la lista enlazada
-    Nodo* actual = registro->primero;
-    while (actual != NULL) {
-        Nodo* siguiente = actual->siguiente;
-        free(actual);
-        actual = siguiente;
-    }
-    free(registro);
-
+    ordenarRegistro(registro);
+    imprimirMatriz(registro);
     return 0;
 }
