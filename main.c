@@ -5,34 +5,33 @@
 
 void printOpciones()
 {
-    system("cls");
-    printf("\nMenú:\n");
-    printf("a) Imprimir lista enlazada\n");
-    printf("b) Aplicar los diferentes métodos de ordenamiento y mostrar el resultado\n");
-    printf("c) Aplicar la búsqueda secuencial y binaria de un número en la lista\n");
-    printf("d) Insertar un número nuevo en la lista original y en la lista ordenada\n");
-    printf("e) Mostrar el menor y mayor valor de la lista original y la lista ordenada\n");
-    printf("f) Armar un árbol con la lista original y mostrar el resultado\n");
-    printf("g) Salir\n");
-    printf("Ingrese una opción: ");
+    printf("\nMenu:\n");
+    printf("1) Imprimir lista enlazada\n");
+    printf("2) Aplicar los diferentes metodos de ordenamiento y mostrar el resultado\n");
+    printf("3) Aplicar la busqueda secuencial y binaria de un numero en la lista\n");
+    printf("4) Insertar un numero nuevo en la lista original y en la lista ordenada\n");
+    printf("5) Mostrar el menor y mayor valor de la lista original y la lista ordenada\n");
+    printf("6) Armar un arbol con la lista original y mostrar el resultado\n");
+    printf("7) Salir\n");
+    printf("Ingrese una opcion: ");
 }
 
 void printOpcionesOrdenamiento()
 {
-    printf("\nMétodos de ordenamiento disponibles:\n");
+    printf("\nMetodos de ordenamiento disponibles:\n");
     printf("1) Burbuja\n");
-    printf("2) Inserción\n");
-    printf("3) Selección\n");
-    printf("4) Ordenación Rápida\n");
-    printf("5) Volver al menú principal\n");
-    printf("Ingrese una opción de ordenamiento: ");
+    printf("2) Insercion\n");
+    printf("3) Seleccion\n");
+    printf("4) Ordenacion Rapida\n");
+    printf("5) Volver al menu principal\n");
+    printf("Ingrese una opcion de ordenamiento: ");
 }
 
 int main()
 {
     int opcion;
     int opcionOrdenamiento;
-    Registro *registro = CreacionDeLista;
+    Registro *registro = CreacionDeLista();
 
     do
     {
@@ -41,13 +40,18 @@ int main()
 
         switch (opcion)
         {
-        case 'a':
-            printf("Opción a seleccionada. Crear lista enlazada.\n");
-            // Lógica para crear la lista
+        case 1:
+            printf("La lista es:\n");
+            imprimirMatriz(registro);
+            printf("\nIngrese 0 para volver al menu principal...\n");
+            do
+            {
+                scanf("%d", &opcion);
+            } while (opcion != 0);
             break;
 
-        case 'b':
-            printf("Opción b seleccionada. Aplicar métodos de ordenamiento.\n");
+        case 2:
+            printf("Opcion 2 seleccionada. Aplicar metodos de ordenamiento.\n");
             do
             {
                 printOpcionesOrdenamiento();
@@ -72,46 +76,46 @@ int main()
                     break;
 
                 case 5:
-                    printf("Volviendo al menú principal...\n");
+                    printf("Volviendo al menu principal...\n");
                     break;
 
                 default:
-                    printf("Opción de ordenamiento inválida. Intente nuevamente.\n");
+                    printf("Opcion de ordenamiento invalida. Intente nuevamente.\n");
                     break;
                 }
             } while (opcionOrdenamiento != 5);
 
             break;
 
-        case 'c':
-            printf("Opción c seleccionada. Aplicar búsqueda secuencial y binaria.\n");
-            // Lógica para aplicar la búsqueda secuencial y binaria y mostrar resultados
+        case 3:
+            printf("Opcion 3 seleccionada. Aplicar busqueda secuencial y binaria.\n");
+            // Logica para aplicar la busqueda secuencial y binaria y mostrar resultados
             break;
 
-        case 'd':
-            printf("Opción d seleccionada. Insertar número nuevo.\n");
-            // Lógica para insertar un número nuevo en la lista original y en la lista ordenada
+        case 4:
+            printf("Opcion 4 seleccionada. Insertar numero nuevo.\n");
+            // Logica para insertar un numero nuevo en la lista original y en la lista ordenada
             break;
 
-        case 'e':
-            printf("Opción e seleccionada. Mostrar menor y mayor valor.\n");
-            // Lógica para mostrar el menor y mayor valor de la lista original y la lista ordenada
+        case 5:
+            printf("Opcion 5 seleccionada. Mostrar menor y mayor valor.\n");
+            // Logica para mostrar el menor y mayor valor de la lista original y la lista ordenada
             break;
 
-        case 'f':
-            printf("Opción f seleccionada. Armar árbol con la lista original.\n");
-            // Lógica para armar el árbol con la lista original y mostrar el resultado
+        case 6:
+            printf("Opcion 6 seleccionada. Armar arbol con la lista original.\n");
+            // Logica para armar el arbol con la lista original y mostrar el resultado
             break;
 
-        case 'g':
-            printf("Opción g seleccionada. Salir.\n");
+        case 7:
+            printf("Opcion 7 seleccionada. Salir.\n");
             break;
 
         default:
-            printf("Opción inválida. Intente nuevamente.\n");
+            printf("Opcion invalida. Intente nuevamente.\n");
             break;
         }
-    } while (opcion != 'g');
+    } while (opcion != 7);
 
     return 0;
 }

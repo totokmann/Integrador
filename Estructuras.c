@@ -60,7 +60,21 @@ void imprimirMatriz(Registro *registro)
     int columna = 0;
     while (actual != NULL)
     {
-        printf("%s", actual->linea);
+        // Agregar ceros adicionales a los números
+        int numero = atoi(actual->linea);
+        if (numero < 10)
+        {
+            printf("00%d", numero);
+        }
+        else if (numero < 100)
+        {
+            printf("0%d", numero);
+        }
+        else
+        {
+            printf("%d", numero);
+        }
+
         columna++;
         if (columna % 10 == 0)
         {

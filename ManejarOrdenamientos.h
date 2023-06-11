@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 #include "Estructuras.h"
 #include "BubbleSort.h"
 

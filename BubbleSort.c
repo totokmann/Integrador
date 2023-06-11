@@ -62,6 +62,4 @@ void bubbleSort(Registro* registro) {
         }
         actual = registro->primero;
     }
-    printf("\nMatriz ordenada:\n");
-    imprimirMatriz(registro);
 }
