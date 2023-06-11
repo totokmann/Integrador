@@ -1,4 +1,5 @@
-#include "busqueda_secuencial.h"
+#include <stdio.h>
+#include "BusquedaSecuencial.h"
 
 // Función para buscar un número en la lista enlazada utilizando la búsqueda secuencial
 int busquedaSecuencial(Nodo* cabeza, char numero[4]) {
@@ -6,7 +7,7 @@ int busquedaSecuencial(Nodo* cabeza, char numero[4]) {
     int posicion = 1;
 
     while (actual != NULL) {
-        if (strcmp(actual->numero, numero) == 0) {
+        if (strcmp(actual->linea, numero) == 0) {
             return posicion;
         }
         actual = actual->siguiente;
