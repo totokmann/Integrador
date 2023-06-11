@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include "Estructuras.h"
+#include "CreacionDeLista.h"
+#include "ManejarOrdenamientos.h"
 
 void printOpciones()
 {
@@ -29,6 +32,7 @@ int main()
 {
     int opcion;
     int opcionOrdenamiento;
+    Registro* registro = CreacionDeLista;
 
     do
     {
@@ -52,19 +56,19 @@ int main()
                 switch (opcionOrdenamiento)
                 {
                 case 1:
-                    metodoBurbuja();
+                    metodoBurbuja(registro);
                     break;
 
                 case 2:
-                    metodoInsercion();
+                    metodoInsercion(registro);
                     break;
 
                 case 3:
-                    metodoSeleccion();
+                    metodoSeleccion(registro);
                     break;
 
                 case 4:
-                    metodoOrdenacionRapida();
+                    metodoOrdenacionRapida(registro);
                     break;
 
                 case 5:

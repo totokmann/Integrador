@@ -1,7 +1,14 @@
+#include <stdio.h>
+
 #include "ManejarOrdenamientos.h"
+#include "BubbleSort.h"
+#include "Estructuras.h"
 
 void metodoBurbuja(Registro *registro){
-    
+    Registro* NuevoRegistro = duplicarRegistro(registro);
+    bubbleSort(NuevoRegistro);
+    printf("El resultado de la ordenación es:\n");
+    imprimirMatriz(NuevoRegistro);
     return;
 };
 

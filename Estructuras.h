@@ -1,9 +1,6 @@
 #ifndef ESTRUCTURAS_H
 #define ESTRUCTURAS_H
 
-#include <stdio.h>
-#include <stdlib.h>
-
 typedef struct Nodo {
     char linea[4];
     struct Nodo* siguiente;
@@ -16,13 +13,13 @@ typedef struct Registro {
 } Registro;
 
 // Función para crear un nuevo nodo
-Nodo* crearNodo(char linea[4]) {}
+Nodo* crearNodo(char linea[4]);
 
 // Función para insertar un nodo al final de la lista enlazada
-void insertarNodo(Registro* registro, Nodo* nuevoNodo) {}
+void insertarNodo(Registro* registro, Nodo* nuevoNodo);
 
-Registro* duplicarRegistro(Registro* original) {}
+Registro* duplicarRegistro(Registro* original);
 
-void imprimirMatriz(Registro* registro) {}
+void imprimirMatriz(Registro* registro);
 
 #endif

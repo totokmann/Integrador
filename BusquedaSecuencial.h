@@ -1,3 +1,3 @@
 #include "Estructuras.h"
 #include <stdio.h>
-int busquedaSecuencial(Nodo* cabeza, char numero[4]) {};
+int busquedaSecuencial(Nodo* cabeza, char numero[4]);

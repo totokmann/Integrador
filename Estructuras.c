@@ -1,17 +1,8 @@
 #include "Estructuras.h"
 
-typedef struct Nodo
-{
-    char linea[4];
-    struct Nodo *siguiente;
-} Nodo;
-
-typedef struct Registro
-{
-    int cantidadDeNumeros;
-    Nodo *primero;
-    Nodo *ultimo;
-} Registro;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // Función para crear un nuevo nodo
 Nodo *crearNodo(char linea[4])
@@ -38,7 +29,7 @@ void insertarNodo(Registro *registro, Nodo *nuevoNodo)
     registro->cantidadDeNumeros += 1;
 }
 
-Registro *duplicarRegistro(const Registro *original)
+Registro* duplicarRegistro(Registro* original)
 {
     Registro *duplicado = (Registro *)malloc(sizeof(Registro));
     duplicado->cantidadDeNumeros = original->cantidadDeNumeros;
