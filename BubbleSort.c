@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "Estructuras.h"
-
+#include "BubbleSort.h"
 //Mueve actual a su derecha
 void intercambioBubbleSort(Registro* registro, int locacion) {
     if (locacion < 0 || locacion > registro->cantidadDeNumeros) {

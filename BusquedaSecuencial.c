@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "BusquedaSecuencial.h"
 
 // Función para buscar un número en la lista enlazada utilizando la búsqueda secuencial

@@ -1,0 +1,9 @@
+# Estructura del proyecto
+
+## MenuPrincipal
+
+* ```MenuPrincipal``` maneja la ejecución.
+* Recién cuando el usuario entra al programa se ejecuta ```CreacionDeLista```.
+* Si hay que ordenar se ocupan las funciones de ```ManejarOrdenamiento```.
+* Si es busqueda secuencial ocupa ```BusquedaSecuencial```.
+* Todas estos modulos dependen de las estructuras y métodos definidos en ```Estructuras```.

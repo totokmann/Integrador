@@ -1,7 +1,10 @@
-void metodoBurbuja(){};
+#include "Estructuras.h"
+#include "BubbleSort.h"
 
-void metodoInsercion(){};
+void metodoBurbuja(Registro *registro){};
 
-void metodoSeleccion(){};
+void metodoInsercion(Registro *registro){};
 
-void metodoOrdenacionRapida(){};
+void metodoSeleccion(Registro *registro){};
+
+void metodoOrdenacionRapida(Registro *registro){};
