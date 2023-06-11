@@ -32,7 +32,7 @@ int main()
 {
     int opcion;
     int opcionOrdenamiento;
-    Registro* registro = CreacionDeLista;
+    Registro *registro = CreacionDeLista;
 
     do
     {
