@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Definición de la estructura Nodo
 typedef struct Nodo {
-    char linea[4];  // Cambio en el tipo de datos a cadena de caracteres
+    char linea[4];
     struct Nodo* siguiente;
 } Nodo;
 
@@ -15,9 +14,9 @@ typedef struct Registro {
 } Registro;
 
 // Función para crear un nuevo nodo
-Nodo* crearNodo(char linea[4]) {  // Cambio en el tipo de parámetro
+Nodo* crearNodo(char linea[4]) {
     Nodo* nodo = (Nodo*)malloc(sizeof(Nodo));
-    strcpy(nodo->linea, linea);  // Uso de strcpy para copiar la cadena
+    strcpy(nodo->linea, linea);
     nodo->siguiente = NULL;
     return nodo;
 }
@@ -31,10 +30,10 @@ void insertarNodo(Registro* registro, Nodo* nuevoNodo) {
         registro->ultimo->siguiente = nuevoNodo;
         registro->ultimo = nuevoNodo;
     }
-    registro->cantidadDeNumeros+=1;
-    return;
+    registro->cantidadDeNumeros += 1;
 }
 
+// Función para imprimir la matriz
 void imprimirMatriz(Registro* registro) {
     Nodo* actual = registro->primero;
     int columna = 0;
@@ -45,8 +44,11 @@ void imprimirMatriz(Registro* registro) {
             printf("\n");
             if (actual->siguiente != NULL) {
                 for (int i = 0; i < 10; i++) {
-                    if (i == 0) {printf("----|");}
-                    else {printf("-----|");}
+                    if (i == 0) {
+                        printf("----|");
+                    } else {
+                        printf("-----|");
+                    }
                 }
                 printf("\n");
             }
@@ -57,70 +59,74 @@ void imprimirMatriz(Registro* registro) {
     }
 }
 
-// Función para ordenar el registro utilizando el método burbuja
-void ordenarRegistro(Registro* registro) {
-    int n = registro->cantidadDeNumeros;
-    printf("\nCantidad de numeros: %d\n", n);
-    Nodo* actual;
-    Nodo* siguiente;
-    int cambioRealizado;
-
-    //Iteramos sobre i, hasta la cantidad de numeros - 1
-    for (int i = 0; i < n - 1; i++) {
-        printf("\nIteración en i: %d\n", i);
-        printf("Iteracion %i: %i\n", i, n);
-        actual = registro->primero;
-        siguiente = actual->siguiente;
-        cambioRealizado = 0;
-
-        //iteramos sobre j hasta la cantidad de numeros - el i previo - 1
-        //O sea, recorremos j veces hasta el número de elementos menos el i iterado.
-        //Esto nos permite ir desde el nodo actual hasta todos los que quedan "hacia la derecha"
-        for (int j = 0; j < n - i - 1; j++) {
-            printf("Iteracion %i: %i\n", j, n);
-            int numeroActual = atoi(actual->linea);
-            int numeroSiguiente = atoi(siguiente->linea);
-
-            // Si el numero "a la izquierda" es mayor al de la derecha lo movemos a la derecha
-            if (numeroActual > numeroSiguiente) {
-                // Realizar intercambio de nodos
-                Nodo* temp = actual;
-                actual = siguiente;
-                siguiente = temp;
-                //Si era el primero lo inserta como primero en el registro
-                if (j == 0) {
-                    registro->primero = actual;
-                } else {
-                    Nodo* nodoAnterior = registro->primero;
-                    for (int k = 0; k < j - 1; k++) {
-                        nodoAnterior = nodoAnterior->siguiente;
-                    }
-                    nodoAnterior->siguiente = actual;
-                }
-                //En cualquier caso se registra como siguiente al previo
-                actual->siguiente = siguiente;
-                temp->siguiente = siguiente->siguiente;
-                siguiente->siguiente = temp;
-
-                cambioRealizado = 1;
-            }
-
-            actual = actual->siguiente;
-            siguiente = siguiente->siguiente;
-        }
-
-        if (!cambioRealizado) {
-            // Si no se realizó ningún intercambio en la primera iteración, el registro ya está ordenado
-            break;
-        }
+//Mueve actual a su derecha
+void intercambioBubbleSort(Registro* registro, int locacion) {
+    if (locacion < 0 || locacion > registro->cantidadDeNumeros) {
+        return;
     }
-    printf("Matriz ordenada:\n");
+    int contador = 1;
+    
+    //Definimos un previo para poder enlazar con el nodo previo
+    Nodo *previo = NULL;
+    Nodo *actual = registro->primero;
+    Nodo *adelante = NULL;
+    while (contador < locacion) {
+        previo = actual;
+        actual = actual->siguiente;
+        contador++;
+    }
+
+    //Si queremos intercambiar el primer elemento con el segundo
+    if (contador == 1) {
+        adelante = actual->siguiente;
+        //Marcamos como primero
+        registro->primero = adelante;
+        //Actual pasa de señalar a adelante como siguiente, a al que adelante tiene como siguiente
+        actual->siguiente = adelante->siguiente;
+        //Adelante pasa de señalar a su siguiente anterior a señalar a actual, que se movió un lugar para atras
+        adelante->siguiente = actual;
+        return;
+    }
+
+    //Error, ultimo intercambiado con vacío
+    if (actual->siguiente == NULL) { return; }
+
+    adelante = actual->siguiente;
+    previo->siguiente = adelante;
+    actual->siguiente = adelante->siguiente;
+    adelante->siguiente = actual;
+
+    if (actual->siguiente == NULL) {
+        registro->ultimo = actual;
+    }
+
     return;
 }
 
+// Algoritmo de ordenamiento Bubble Sort para la lista enlazada
+void bubbleSort(Registro* registro) {
+    int i, j = 0;
+    Nodo* actual = registro->primero;
+    Nodo* siguiente;
+
+    //Por qué arrancan en 1? porque medimos la lista enlazada con 1 como primer elemento, no con 0
+    for (i = 1; i <= registro->cantidadDeNumeros; i++) {
+        for (j = 1; j <= registro->cantidadDeNumeros - i; j++) {
+            if (actual->siguiente == NULL) {break;};
+            if (atoi(actual->linea) > atoi(actual->siguiente->linea)) {
+                intercambioBubbleSort(registro, j);
+            }
+            else {
+                actual = actual->siguiente;
+            }
+        }
+        actual = registro->primero;
+    }
+    printf("\nMatriz ordenada:\n");
+    imprimirMatriz(registro);
+}
 
 int main() {
-
     Registro* registro = (Registro*)malloc(sizeof(Registro));
     registro->primero = NULL;
     registro->ultimo = NULL;
@@ -145,11 +151,15 @@ int main() {
         Nodo* nuevoNodo = crearNodo(linea);
         insertarNodo(registro, nuevoNodo);
     }
-    printf("cantidad de elementos: %d\n", registro->cantidadDeNumeros);
+
+    printf("Cantidad de elementos: %d\n", registro->cantidadDeNumeros);
 
     fclose(archivo);
+
+    printf("\nMatriz original:\n");
     imprimirMatriz(registro);
-    ordenarRegistro(registro);
-    imprimirMatriz(registro);
+
+    bubbleSort(registro);
+
     return 0;
 }

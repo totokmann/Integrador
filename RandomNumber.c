@@ -30,7 +30,7 @@ int main() {
     }
 
     // Crear el archivo y escribir los números
-    archivo = fopen("C:\\TDM-GCC-64\\numeros.txt", "w");
+    archivo = fopen("./numeros.txt", "w");
     if (archivo == NULL) {
         printf("No se pudo crear el archivo.\n");
         return 1;
