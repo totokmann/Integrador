@@ -22,4 +22,6 @@ Registro* duplicarRegistro(Registro* original);
 
 void imprimirMatriz(Registro* registro);
 
+void eliminarRegistro(Registro* registro);
+
 #endif

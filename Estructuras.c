@@ -102,3 +102,19 @@ void imprimirMatriz(Registro *registro)
         actual = actual->siguiente;
     }
 }
+
+void eliminarRegistro(Registro* registro) {
+    Nodo* actual = registro->primero;
+    Nodo* temp;
+
+    while (actual != NULL) {
+        temp = actual;
+        actual = actual->siguiente;
+        free(temp);
+    }
+
+    registro->primero = NULL;
+    registro->ultimo = NULL;
+    registro->cantidadDeNumeros = 0;
+    free(registro);
+}

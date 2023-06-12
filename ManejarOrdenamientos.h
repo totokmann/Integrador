@@ -3,6 +3,7 @@
 #include "Estructuras.h"
 #include "BubbleSort.h"
 #include "SelectionSort.h"
+#include "InsertionSort.h"
 
 void metodoBurbuja(Registro *registro);
 
