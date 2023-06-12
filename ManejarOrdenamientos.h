@@ -2,6 +2,7 @@
 #include <time.h>
 #include "Estructuras.h"
 #include "BubbleSort.h"
+#include "SelectionSort.h"
 
 void metodoBurbuja(Registro *registro);
 
