@@ -32,9 +32,9 @@ void insertarNodo(Registro *registro, Nodo *nuevoNodo)
 Registro* duplicarRegistro(Registro* original)
 {
     Registro *duplicado = (Registro *)malloc(sizeof(Registro));
-    duplicado->cantidadDeNumeros = original->cantidadDeNumeros;
     duplicado->primero = NULL;
     duplicado->ultimo = NULL;
+    duplicado->cantidadDeNumeros = 0;
 
     // Recorrer la lista enlazada original y copiar los nodos
     Nodo *actual = original->primero;
