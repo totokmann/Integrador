@@ -10,6 +10,6 @@ typedef struct NodoArbol {
 } NodoArbol;
 
 NodoArbol* construirArbol(const char* nombreArchivo);
-void imprimirArbolEnOrden(NodoArbol* raiz);
+void imprimirArbol(NodoArbol* raiz, int nivel);
 
 #endif  // ARBOLBINARIO_H
