@@ -18,6 +18,8 @@ Nodo* crearNodo(char linea[4]);
 // Función para insertar un nodo al final de la lista enlazada
 void insertarNodo(Registro* registro, Nodo* nuevoNodo);
 
+Registro* CreacionDeLista();
+
 Registro* duplicarRegistro(Registro* original);
 
 void imprimirMatriz(Registro* registro);
