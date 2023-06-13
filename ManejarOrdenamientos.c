@@ -8,7 +8,7 @@ void metodoBurbuja(Registro *registro)
     clock_t fin = clock(); // Guardar el tiempo final
 
     double tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC; // Calcular la diferencia de tiempo en segundos
-    system("cls");
+    //system("cls");
     printf("\n Se ordenaron los numeros en un tiempo de %f segundos con el metodo burbuja\nResultante:\n", tiempo);
     imprimirMatriz(NuevoRegistro);
     eliminarRegistro(NuevoRegistro);

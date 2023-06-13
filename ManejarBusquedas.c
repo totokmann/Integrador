@@ -68,7 +68,6 @@ void ManejarBusquedas(Registro *registro, int numABuscar)
     Registro *registroOrdenado = duplicarRegistro(registro);
     insertionSort(registroOrdenado);
 
-    system("cls");
     printf("\nMatriz desordenada:\n");
     imprimirMatriz(registro);
 
@@ -161,4 +160,74 @@ void encontrarMaximoMinimo(Registro* registro) {
     printf("Tiempo de ejecucion: %f segundos\n\n", tiempo);
     eliminarRegistro(registroOrdenado);
     return;
+}
+
+void insercionDeNumero(Registro *registro, char caracter[4])
+{
+    printf("\n");
+    Registro* duplicado = duplicarRegistro(registro);
+    insertionSort(duplicado);
+    Nodo* elemento1 = crearNodo(caracter); //nodo a insertar en desordenada
+    Nodo* elemento2 = crearNodo(caracter); //nodo a insertar en ordenada
+
+    Nodo* actual = registro->primero;
+    Nodo* anterior = NULL;
+    int colocado = 0;
+    //Inserción en desordenado
+    clock_t inicio = clock();
+    while (colocado == 0 && actual->siguiente != NULL)
+    {
+        anterior = actual;
+        actual = actual->siguiente;
+        if ((atoi(actual->linea) > atoi(caracter)) && (atoi(anterior->linea) < atoi(caracter)))
+        {
+            anterior->siguiente = elemento1;
+            elemento1->siguiente = actual;
+            colocado = 1;
+        }
+    }
+    clock_t fin = clock();
+    double tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
+
+    if (colocado == 0) {
+        printf("\nNo se pudo insertar el numero en la lista desordenada\n");
+    }
+    else {
+        printf("\nSe inserto el numero en la lista desordenada entre los numeros %d y %d\n", atoi(anterior->linea), atoi(actual->linea));
+    }
+    printf("Tardo %f segundos\n", tiempo);
+    printf("\n");
+    imprimirMatriz(registro);
+    printf("\n\n");
+
+    actual = duplicado->primero;
+    anterior = NULL;
+    colocado = 0;
+    //Inserción en ordenado
+    inicio = clock();
+    while (colocado == 0 && actual->siguiente != NULL)
+    {
+        anterior = actual;
+        actual = actual->siguiente;
+        if ((atoi(actual->linea) > atoi(caracter)) && (atoi(anterior->linea) < atoi(caracter)))
+        {
+            anterior->siguiente = elemento2;
+            elemento2->siguiente = actual;
+            colocado = 1;
+        }
+    }
+    fin = clock();
+    tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
+
+    if (colocado == 0) {
+        printf("\nNo se pudo insertar el numero en la lista desordenada\n");
+    }
+    else {
+        printf("\nSe inserto el numero en la lista desordenada entre los numeros %d y %d\n", atoi(anterior->linea), atoi(actual->linea));
+    }
+    printf("Tardo %f segundos\n", tiempo);
+    printf("\n");
+    imprimirMatriz(duplicado);
+    eliminarRegistro(duplicado);
+    printf("\n");
 }

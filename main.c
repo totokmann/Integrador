@@ -36,6 +36,7 @@ void volverAlMenuPrincipal()
     {
         scanf("%d", &opcion);
     } while (opcion != 0);
+    system("cls");
     return;
 }
 
@@ -43,6 +44,7 @@ int main()
 {
     int opcion;
     int opcionOrdenamiento;
+    char caracter[4];
     int numero;
     Registro *registro = CreacionDeLista();
 
@@ -107,13 +109,14 @@ int main()
 
         case 4:
             printf("Opcion 4 seleccionada. Insertar numero nuevo.\n");
-            // Logica para insertar un numero nuevo en la lista original y en la lista ordenada
+            printf("Ingrese el numero a insertar: ");
+            scanf("%s", &caracter);
+            insercionDeNumero(registro, caracter);
             volverAlMenuPrincipal();
             break;
 
         case 5:
             printf("Opcion 5 seleccionada. Mostrar menor y mayor valor.\n");
-
             encontrarMaximoMinimo(registro);
             volverAlMenuPrincipal();
             break;
