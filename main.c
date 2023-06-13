@@ -122,8 +122,8 @@ int main()
         case 6:
             printf("Opcion 6 seleccionada. Armar arbol con la lista original.\n");
             printf("El arbol creado es:\n");
-            NodoArbol* arbol = construirArbol("numeros.txt");
-            imprimirArbolEnOrden(arbol);
+            NodoArbol *raiz = construirArbol("numeros.txt");
+            imprimirArbol(raiz, 0);
             volverAlMenuPrincipal();
             break;
 

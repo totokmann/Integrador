@@ -45,10 +45,25 @@ NodoArbol* construirArbol(const char* numeros) {
 }
 
 // Función auxiliar para imprimir el árbol en orden (in-order traversal)
-void imprimirArbolEnOrden(NodoArbol* raiz) {
-    if (raiz != NULL) {
-        imprimirArbolEnOrden(raiz->izquierdo);
-        printf("%d ", raiz->valor);
-        imprimirArbolEnOrden(raiz->derecho);
+void imprimirArbol(NodoArbol *raiz, int nivel)
+{
+    if (raiz == NULL) {
+        return;
     }
+
+    imprimirArbol(raiz->derecho, nivel + 1);
+
+    for (int i = 0; i < nivel; i++) {
+        printf("    |    ");
+    }
+
+    printf("%d\n\n", raiz->valor);
+
+    imprimirArbol(raiz->izquierdo, nivel + 1);
 }
+
+
+
+
+
+
