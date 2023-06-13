@@ -3,6 +3,7 @@
 #include "CreacionDeLista.h"
 #include "ManejarOrdenamientos.h"
 #include "ManejarBusquedas.h"
+#include "ArbolBinario.h"
 
 void printOpciones()
 {
@@ -120,7 +121,9 @@ int main()
 
         case 6:
             printf("Opcion 6 seleccionada. Armar arbol con la lista original.\n");
-            // Logica para armar el arbol con la lista original y mostrar el resultado
+            printf("El arbol creado es:\n");
+            NodoArbol* arbol = construirArbol("numeros.txt");
+            imprimirArbolEnOrden(arbol);
             volverAlMenuPrincipal();
             break;
 
