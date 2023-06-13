@@ -113,7 +113,8 @@ int main()
 
         case 5:
             printf("Opcion 5 seleccionada. Mostrar menor y mayor valor.\n");
-            // Logica para mostrar el menor y mayor valor de la lista original y la lista ordenada
+
+            encontrarMaximoMinimo(registro);
             volverAlMenuPrincipal();
             break;
 

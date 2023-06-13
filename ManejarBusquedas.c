@@ -1,5 +1,4 @@
 #include "ManejarBusquedas.h"
-#include "CreacionDeLista.h"
 
 int busquedaBinaria(Nodo *cabeza, int elemento)
 {
@@ -95,7 +94,7 @@ void ManejarBusquedas(Registro *registro, int numABuscar)
     Secuencial = busquedaSecuencial(registro->primero, numABuscar);
     fin = clock();
     tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
-        if (Secuencial != -1)
+    if (Secuencial != -1)
     {
         printf("\nBusqueda secuencial en la matriz desordenada encontro el elemento: %d", Secuencial);
     }
@@ -118,4 +117,48 @@ void ManejarBusquedas(Registro *registro, int numABuscar)
         printf("\nBusqueda binaria en la matriz ordenada no encontro el elemento");
     }
     printf("\nTiempo de ejecucion: %f segundos\n\n", tiempo);
+}
+
+void encontrarMaximoMinimo(Registro* registro) {
+
+    if (registro->primero == NULL) {
+        return;
+    }
+    int maximo, minimo;
+
+    //Inicio mediciones para desordenado
+    clock_t inicio = clock();
+    maximo = atoi(registro->primero->linea);
+    minimo = atoi(registro->primero->linea);
+    Nodo* actual = registro->primero->siguiente;
+
+    while (actual != NULL) {
+        int dato = atoi(actual->linea);
+        if (dato > maximo) {
+            maximo = dato;
+        }
+        else if (dato < minimo) {
+            minimo = dato;
+        }
+        actual = actual->siguiente;
+    }
+    clock_t fin = clock();
+    double tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
+    printf("Analizando la lista desordenada:\n");
+    printf("El maximo es: %d\n", maximo);
+    printf("El minimo es: %d\n", minimo);
+    printf("Tiempo de ejecucion: %f segundos\n\n", tiempo);
+
+    Registro* registroOrdenado = duplicarRegistro(registro);
+    //Inicio de mediciones para ordenado
+    inicio = clock();
+    insertionSort(registroOrdenado);
+    fin = clock();
+    tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
+    printf("Analizando la lista ordenada:\n");
+    printf("El maximo es: %d\n", atoi(registroOrdenado->ultimo->linea));
+    printf("El minimo es: %d\n", atoi(registroOrdenado->primero->linea));
+    printf("Tiempo de ejecucion: %f segundos\n\n", tiempo);
+    eliminarRegistro(registroOrdenado);
+    return;
 }
