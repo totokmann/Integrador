@@ -2,6 +2,7 @@
 #include "Estructuras.h"
 #include "CreacionDeLista.h"
 #include "ManejarOrdenamientos.h"
+#include "ManejarBusquedas.h"
 
 void printOpciones()
 {
@@ -27,27 +28,37 @@ void printOpcionesOrdenamiento()
     printf("Ingrese una opcion de ordenamiento: ");
 }
 
+void volverAlMenuPrincipal()
+{
+    int opcion;
+    printf("\nIngrese 0 para volver al menu principal...\n");
+    do
+    {
+        scanf("%d", &opcion);
+    } while (opcion != 0);
+    return;
+}
+
 int main()
 {
     int opcion;
     int opcionOrdenamiento;
+    int numero;
     Registro *registro = CreacionDeLista();
 
     do
     {
         printOpciones();
-        scanf("%d", &opcion);
+        opcion = 0;
+        printf("Ingrese la opcion deseada: ");
+        scanf("%i", &opcion);
 
         switch (opcion)
         {
         case 1:
             printf("La lista es:\n");
             imprimirMatriz(registro);
-            printf("\nIngrese 0 para volver al menu principal...\n");
-            do
-            {
-                scanf("%d", &opcion);
-            } while (opcion != 0);
+            volverAlMenuPrincipal();
             break;
 
         case 2:
@@ -84,27 +95,32 @@ int main()
                     break;
                 }
             } while (opcionOrdenamiento != 5);
-
             break;
 
         case 3:
             printf("Opcion 3 seleccionada. Aplicar busqueda secuencial y binaria.\n");
-            // Logica para aplicar la busqueda secuencial y binaria y mostrar resultados
+            printf("Ingrese el numero a buscar: ");
+            scanf("%i", &numero);
+            ManejarBusquedas(registro, numero);
+            volverAlMenuPrincipal();
             break;
 
         case 4:
             printf("Opcion 4 seleccionada. Insertar numero nuevo.\n");
             // Logica para insertar un numero nuevo en la lista original y en la lista ordenada
+            volverAlMenuPrincipal();
             break;
 
         case 5:
             printf("Opcion 5 seleccionada. Mostrar menor y mayor valor.\n");
             // Logica para mostrar el menor y mayor valor de la lista original y la lista ordenada
+            volverAlMenuPrincipal();
             break;
 
         case 6:
             printf("Opcion 6 seleccionada. Armar arbol con la lista original.\n");
             // Logica para armar el arbol con la lista original y mostrar el resultado
+            volverAlMenuPrincipal();
             break;
 
         case 7:

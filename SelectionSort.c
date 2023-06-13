@@ -22,7 +22,8 @@ void intercambioSelection(Registro *registro, int indice1, int indice2)
     }
 
     contador = 1;
-    while (contador < indice1) {
+    while (contador < indice1)
+    {
         nodo1 = nodo1->siguiente;
         contador++;
     }
@@ -89,13 +90,14 @@ void selectionSort(Registro *registro)
     for (int i = 1; i < registro->cantidadDeNumeros; i++) // Corrección en el límite del bucle interno
     {
         nodoEnIteracion = registro->primero;
-        for (int k = 1; k < i; k++) {
+        for (int k = 1; k < i; k++)
+        {
             nodoEnIteracion = nodoEnIteracion->siguiente;
         }
         indiceMenor = i;
         menorNodo = nodoEnIteracion;
         temporal = nodoEnIteracion->siguiente;
-        for (int j = i+1; j <= registro->cantidadDeNumeros; j++)
+        for (int j = i + 1; j <= registro->cantidadDeNumeros; j++)
         {
             if (temporal == NULL)
             {
