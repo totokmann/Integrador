@@ -1,5 +1,6 @@
 #include "BubbleSort.h"
 //Mueve actual a su derecha
+//Evalua casos de error
 void intercambioBubbleSort(Registro* registro, int locacion) {
     if (locacion < 0 || locacion > registro->cantidadDeNumeros) {
         return;

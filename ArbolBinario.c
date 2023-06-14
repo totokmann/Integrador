@@ -61,9 +61,3 @@ void imprimirArbol(NodoArbol *raiz, int nivel)
 
     imprimirArbol(raiz->izquierdo, nivel + 1);
 }
-
-
-
-
-
-

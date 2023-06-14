@@ -1,4 +1,6 @@
 #include "ManejarOrdenamientos.h"
+
+//Maneja el metodo de burbuja y mide el tiempo
 void metodoBurbuja(Registro *registro)
 {
     Registro *NuevoRegistro = duplicarRegistro(registro); // duplicamos registro
@@ -15,6 +17,7 @@ void metodoBurbuja(Registro *registro)
     return;
 };
 
+//Maneja el metodo de insercion y mide el tiempo
 void metodoInsercion(Registro *registro)
 {
     Registro *NuevoRegistro = duplicarRegistro(registro); // duplicamos registro
@@ -31,6 +34,7 @@ void metodoInsercion(Registro *registro)
     return;
 };
 
+//Mide el metodo de seleccion y mide el tiempo
 void metodoSeleccion(Registro *registro)
 {
     Registro *NuevoRegistro = duplicarRegistro(registro); // duplicamos registro
@@ -47,6 +51,7 @@ void metodoSeleccion(Registro *registro)
     return;
 };
 
+//Maneja el metodo de quicksort y mide el tiempo
 void metodoOrdenacionRapida(Registro *registro)
 {
     printf("Esta función todavia no está terminada!");

@@ -133,6 +133,7 @@ void imprimirMatriz(Registro *registro)
     }
 }
 
+//Elimina todos los elementos de un registro
 void eliminarRegistro(Registro* registro) {
     Nodo* actual = registro->primero;
     Nodo* temp;

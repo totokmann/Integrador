@@ -1,10 +1,11 @@
 #include "ManejarBusquedas.h"
 
+//Busca un nodo que tenga el valor y devuelve el indice o -1 si no lo encuentra
 int busquedaBinaria(Nodo *cabeza, int elemento)
 {
     Nodo *inicio = cabeza;
     Nodo *fin = NULL;
-    int indice = 0;
+    int indice = 1;
 
     while (inicio != fin)
     {
@@ -58,11 +59,10 @@ int busquedaSecuencial(Nodo *cabeza, int numero)
         }
         actual = actual->siguiente;
         posicion++;
-    }
-
-    return -1;
+    }    return -1;
 }
 
+//Maneja todas las busquedas y llama a todas las funciones del archivo
 void ManejarBusquedas(Registro *registro, int numABuscar)
 {
     Registro *registroOrdenado = duplicarRegistro(registro);
@@ -81,7 +81,7 @@ void ManejarBusquedas(Registro *registro, int numABuscar)
     double tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
     if (Secuencial != -1)
     {
-        printf("\nBusqueda secuencial en la matriz ordenada encontro el elemento: %d", Secuencial);
+        printf("\nBusqueda secuencial en la matriz ordenada encontro el elemento en el indice: %d", Secuencial);
     }
     else {
         printf("\nBusqueda secuencial en la matriz ordenada no encontro el elemento");
@@ -95,7 +95,7 @@ void ManejarBusquedas(Registro *registro, int numABuscar)
     tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
     if (Secuencial != -1)
     {
-        printf("\nBusqueda secuencial en la matriz desordenada encontro el elemento: %d", Secuencial);
+        printf("\nBusqueda secuencial en la matriz desordenada encontro el numero en el indice: %d", Secuencial);
     }
     else {
         printf("\nBusqueda secuencial en la matriz desordeanada no encontro el elemento");
@@ -105,12 +105,12 @@ void ManejarBusquedas(Registro *registro, int numABuscar)
 
     //Binaria en lista ordenada
     inicio = clock();
-    int binaria = busquedaBinaria(registro->primero, numABuscar);
+    int binaria = busquedaBinaria(registroOrdenado->primero, numABuscar);
     fin = clock();
     tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
     if (binaria != -1)
     {
-        printf("\nBusqueda binaria en la matriz ordenada encontro el elemento: %d", binaria);
+        printf("\nBusqueda binaria en la matriz ordenada encontro el elemento en el indice: %d", binaria);
     }
     else {
         printf("\nBusqueda binaria en la matriz ordenada no encontro el elemento");
@@ -118,6 +118,7 @@ void ManejarBusquedas(Registro *registro, int numABuscar)
     printf("\nTiempo de ejecucion: %f segundos\n\n", tiempo);
 }
 
+// Encuentra maximo y minimo, para la lista desordenada recorre y para la lista ordenada busca primero y ultimo del registro
 void encontrarMaximoMinimo(Registro* registro) {
 
     if (registro->primero == NULL) {
@@ -162,6 +163,8 @@ void encontrarMaximoMinimo(Registro* registro) {
     return;
 }
 
+//Busca donde puede insertar un numero dado en ordenada y desordenada
+//En desordenada es permanente para el resto de la ejecucion del programa
 void insercionDeNumero(Registro *registro, char caracter[4])
 {
     printf("\n");
@@ -220,10 +223,10 @@ void insercionDeNumero(Registro *registro, char caracter[4])
     tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
 
     if (colocado == 0) {
-        printf("\nNo se pudo insertar el numero en la lista desordenada\n");
+        printf("\nNo se pudo insertar el numero en la lista ordenada\n");
     }
     else {
-        printf("\nSe inserto el numero en la lista desordenada entre los numeros %d y %d\n", atoi(anterior->linea), atoi(actual->linea));
+        printf("\nSe inserto el numero en la lista ordenada entre los numeros %d y %d\n", atoi(anterior->linea), atoi(actual->linea));
     }
     printf("Tardo %f segundos\n", tiempo);
     printf("\n");

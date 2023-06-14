@@ -1,5 +1,6 @@
 #include "SelectionSort.h"
 
+//Intercambia dos numeros, contempla errores
 void intercambioSelection(Registro *registro, int indice1, int indice2)
 {
     if (indice1 < 0 || indice2 < 0 ||
@@ -12,7 +13,7 @@ void intercambioSelection(Registro *registro, int indice1, int indice2)
     Nodo *nodo1 = registro->primero;
     Nodo *nodo2 = registro->primero;
 
-    while (contador < indice2) // Adjusted condition
+    while (contador < indice2)
     {
         nodo2 = nodo2->siguiente;
         contador++;
@@ -64,6 +65,7 @@ void intercambioSelection(Registro *registro, int indice1, int indice2)
     }
 }
 
+//Encuentra el nodo anterior
 Nodo *nodoAnterior(Registro *registro, Nodo *nodo)
 {
     Nodo *anterior = NULL;
@@ -78,13 +80,14 @@ Nodo *nodoAnterior(Registro *registro, Nodo *nodo)
     return anterior;
 }
 
+//Ordenamiento de seleccion
 void selectionSort(Registro *registro)
 {
     int indiceMenor;
     Nodo *menorNodo;
     Nodo *temporal;
     Nodo *nodoEnIteracion = registro->primero;
-    for (int i = 1; i < registro->cantidadDeNumeros; i++) // Corrección en el límite del bucle interno
+    for (int i = 1; i < registro->cantidadDeNumeros; i++)
     {
         nodoEnIteracion = registro->primero;
         for (int k = 1; k < i; k++)

@@ -1,5 +1,7 @@
 #include "InsertionSort.h"
 
+// Metodo de ordenamiento por insercion
+//Crea una nueva lista enlazada ordenada
 void insertionSort(Registro* registro) {
     Nodo* ordenado = NULL;
     Nodo* actual = registro->primero;
