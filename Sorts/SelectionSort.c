@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include "Estructuras.h"
 #include "SelectionSort.h"
 
 void intercambioSelection(Registro *registro, int indice1, int indice2)

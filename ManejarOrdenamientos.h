@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <time.h>
 #include "Estructuras.h"
-#include "BubbleSort.h"
-#include "SelectionSort.h"
-#include "InsertionSort.h"
+#include "./Sorts/BubbleSort.h"
+#include "./Sorts/SelectionSort.h"
+#include "./Sorts/InsertionSort.h"
 
 void metodoBurbuja(Registro *registro);
 
