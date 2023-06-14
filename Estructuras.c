@@ -94,7 +94,7 @@ void imprimirMatriz(Registro *registro)
         int numero = atoi(actual->linea);
         if (numero < 10)
         {
-            printf("00%d", numero);
+            printf("000%d", numero);
         }
         else if (numero < 100)
         {
