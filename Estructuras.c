@@ -98,6 +98,10 @@ void imprimirMatriz(Registro *registro)
         }
         else if (numero < 100)
         {
+            printf("00%d", numero);
+        }
+        else if (numero < 1000)
+        {
             printf("0%d", numero);
         }
         else
@@ -115,11 +119,11 @@ void imprimirMatriz(Registro *registro)
                 {
                     if (i == 0)
                     {
-                        printf("----|");
+                        printf("-----|");
                     }
                     else
                     {
-                        printf("-----|");
+                        printf("------|");
                     }
                 }
                 printf("\n");

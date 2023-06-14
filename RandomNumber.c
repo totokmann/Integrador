@@ -13,7 +13,7 @@ int numeroRepetido(int numeros[], int indice, int numero) {
 }
 
 int main() {
-    int numeros[100];
+    int numeros[1000];
     FILE* archivo;
     int i, numero;
 
@@ -21,9 +21,9 @@ int main() {
     srand(time(NULL));
 
     // Generar 100 números aleatorios sin repeticiones
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < 1000; i++) {
         do {
-            numero = rand() % 1000 + 1;
+            numero = rand() % 10000 + 1;
         } while (numeroRepetido(numeros, i, numero));
 
         numeros[i] = numero;
@@ -36,7 +36,7 @@ int main() {
         return 1;
     }
 
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < 1000; i++) {
         fprintf(archivo, "%d\n", numeros[i]);
     }
 

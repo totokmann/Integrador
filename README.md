@@ -1,3 +1,7 @@
+# Comando para compilar
+```gcc -o ejecutable.exe .\Sorts\BubbleSort.c Estructuras.c main.c ManejarOrdenamientos.c .\Sorts\SelectionSort.c .\Sorts\InsertionSort.c ManejarBusquedas.c ArbolBinario.c```
+
+
 # Estructura del proyecto
 
 ## MenuPrincipal
@@ -11,7 +15,7 @@
 
 # Donde está cada actividad? 
 * a) crear una lista enlazada con 100 números distintos y desordenados, no consecutivos
-    * Se crea la lista con el ejecutable ```RandomNumbers```
+    * Se crea la lista con el ejecutable ```RandomNumbers```, u .exe es a.exe
     * Se lee el archivo de texto creado con ```Estructuras.c```
 
 * b) aplicar los diferentes métodos de ordenamiento (burbuja,inserción,selección, ordenación rápida), tomar el tiempo de cada uno y mostrar por pantalla el resultado indicando el método aplicado.
@@ -28,6 +32,6 @@ ordenada por el método de inserción, tomar el tiempo y mostrar la lista origen
 
 * e) Mostrar el menor y mayor valor de la lista, primero sobre la lista original y luego sobre la lista ordenada por el método inserción, tomar los tiempos y mostrar los resultados.
     * También dentro de ```ManejarBusquedas```, la función ```encontrarMaximoMinimo```
-    
+
 * f) Con la lista original armar un árbol, donde la raíz sea el valor medio de todas los números y luego ir insertando nodos de acuerdo a que si el valor es menor que la raíz se agrega a la izquierda y si es mayor se agrega a la derecha. Mostrar el resultado
     * ```ArbolBinario``` define la estructura y los métodos.
